@@ -1,15 +1,18 @@
 
 package com.senalba.controleaquisicoes.model;
 
-public class Usuario
-{
+public abstract class Usuario{
+    private int ID;
     private String nome;
     private String iniciais;
+    private String tipo;
 
-    public Usuario(String nome, String iniciais)
+    public Usuario(int ID, String nome, String iniciais, String tipo)
     {
+        this.ID = ID;
         this.nome = nome;
         this.iniciais = iniciais;
+        this.tipo = tipo;
     }
 
     public String getNome()
@@ -21,4 +24,6 @@ public class Usuario
     {
         return iniciais;
     }
+    public abstract String getTipo();
+}
 }
