@@ -7,6 +7,7 @@ import com.senalba.controleaquisicoes.user.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class App {
     private List<Usuario> usuarios;

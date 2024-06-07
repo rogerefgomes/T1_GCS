@@ -73,20 +73,25 @@ public class Sistema {
         }
     }
 
-//    public void aprovarRejeitarPedido(int idPedido, boolean aprovar) {
-//        for (PedidoAquisicao pedido : pedidos) {
-//            if (pedido.getId() == idPedido && usuarioAtual instanceof Administrador) {
-//                if (aprovar) {
-//                    pedido.aprovar();
-//                    System.out.println("Pedido aprovado.");
-//                } else {
-//                    pedido.reprovar();
-//                    System.out.println("Pedido reprovado.");
-//                }
-//                return;
-//            }
-//        }
-//        System.out.println("Pedido não encontrado ou usuário não autorizado.");
+    public void aprovarRejeitarPedido(int idPedido, boolean aprovar) {
+        for (PedidoAquisicao pedido : pedidos) {
+            if (pedido.getId() == idPedido && usuarioAtual instanceof Administrador) {
+                if (aprovar) {
+                    pedido.aprovar();
+                    System.out.println("Pedido aprovado.");
+                } else {
+                    pedido.reprovar();
+                    System.out.println("Pedido reprovado.");
+                }
+                return;
+            }
+        }
+        System.out.println("Pedido não encontrado ou usuário não autorizado.");
+    }
+
+//    public void verificaStatus(){
+//        PedidoAquisicao pedido
+//        pedido.concluir();
 //    }
 
     public void visualizarEstatisticas() {
@@ -123,3 +128,4 @@ public class Sistema {
         System.out.println("Valor médio dos pedidos nos últimos 30 dias: " + valorMedio);
     }
 }
+

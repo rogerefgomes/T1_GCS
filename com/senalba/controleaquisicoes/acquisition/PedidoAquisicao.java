@@ -13,6 +13,7 @@ public class PedidoAquisicao {
     private Date dataPedido;
     private Date dataConclusao;
     private String status;
+    private int id;
     private List<ItemPedido> itens;
 
     public PedidoAquisicao(Funcionario solicitante, List<ItemPedido> itens) {
@@ -47,6 +48,13 @@ public class PedidoAquisicao {
     }
 
     // Getters and Setters
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public Funcionario getSolicitante() {
         return solicitante;
     }
