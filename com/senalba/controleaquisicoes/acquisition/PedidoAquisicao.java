@@ -14,6 +14,7 @@ public class PedidoAquisicao {
     private Date dataConclusao;
     private String status;
     private List<ItemPedido> itens;
+    private String idPedido;
 
     public PedidoAquisicao(Funcionario solicitante, List<ItemPedido> itens) {
         this.solicitante = solicitante;
