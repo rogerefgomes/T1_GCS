@@ -21,6 +21,43 @@ public class Sistema {
         this.pedidos = new ArrayList<>();
     }
 
+    public void inicializarDados() {
+        // Adicionar departamentos
+        departamentos.add(new Departamento("Financeiro", 5000.0));
+        departamentos.add(new Departamento("RH", 3000.0));
+        departamentos.add(new Departamento("Engenharia", 10000.0));
+        departamentos.add(new Departamento("Manutenção", 4000.0));
+        departamentos.add(new Departamento("TI", 7000.0));
+
+        // Adicionar funcionários e administradores
+        Departamento financeiro = departamentos.get(0);
+        Departamento rh = departamentos.get(1);
+        Departamento engenharia = departamentos.get(2);
+        Departamento manutencao = departamentos.get(3);
+        Departamento ti = departamentos.get(4);
+
+        usuarios.add(new Funcionario("F112230", "Carlos Silva", financeiro));
+        usuarios.add(new Funcionario("F112231", "Maria Souza", rh));
+        usuarios.add(new Funcionario("F112232", "João Oliveira", engenharia));
+        usuarios.add(new Funcionario("F112233", "Ana Costa", manutencao));
+        usuarios.add(new Funcionario("F112234", "Luiz Lima", ti));
+        usuarios.add(new Funcionario("F112235", "Pedro Santos", financeiro));
+        usuarios.add(new Funcionario("F112236", "Mariana Almeida", rh));
+        usuarios.add(new Funcionario("F112237", "Rafael Torres", engenharia));
+        usuarios.add(new Funcionario("F112238", "Juliana Fernandes", manutencao));
+        usuarios.add(new Funcionario("F112239", "Thiago Silva", ti));
+        usuarios.add(new Funcionario("F112240", "André Rocha", financeiro));
+        usuarios.add(new Funcionario("F112241", "Carla Menezes", rh));
+        usuarios.add(new Funcionario("F112242", "Gustavo Azevedo", engenharia));
+        usuarios.add(new Funcionario("F112243", "Fernanda Costa", manutencao));
+        usuarios.add(new Funcionario("F112244", "Paulo Gomes", ti));
+
+        usuarios.add(new Administrador("A101120", "Ademir Silva"));
+        usuarios.add(new Administrador("A101121", "Marcelo Fontes"));
+        usuarios.add(new Administrador("A101122", "Gabriela Tebet"));
+
+    }
+
     public void escolherUsuario(String id) {
         for (Usuario usuario : usuarios) {
             if (usuario.getId().equals(id)) {
