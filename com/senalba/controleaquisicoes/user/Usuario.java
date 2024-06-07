@@ -33,4 +33,12 @@ public abstract class Usuario {
     }
 
     public abstract String getTipo();
+
+    public String toString(){
+        return "\nBem-vindo!" + 
+            "\nUsuário atual: " +getNome()+
+            "\nID: " +getId()+
+            "\nIniciais: " +getIniciais()+
+            "\nTipo: " +getTipo();
+    }
 }

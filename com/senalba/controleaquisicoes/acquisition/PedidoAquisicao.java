@@ -1,8 +1,8 @@
 package com.senalba.controleaquisicoes.acquisition;
 
-import com.senalba.controleaquisicoes.acquisition.ItemPedido;
 import com.senalba.controleaquisicoes.user.Departamento;
 import com.senalba.controleaquisicoes.user.Funcionario;
+import com.senalba.controleaquisicoes.user.Usuario;
 
 import java.util.Date;
 import java.util.List;
@@ -16,12 +16,17 @@ public class PedidoAquisicao {
     private List<ItemPedido> itens;
     private String idPedido;
 
-    public PedidoAquisicao(Funcionario solicitante, List<ItemPedido> itens) {
+    public PedidoAquisicao(Funcionario solicitante, List<ItemPedido> itens, String idPedido) {
         this.solicitante = solicitante;
         this.departamento = solicitante.getDepartamento();
         this.dataPedido = new Date();
         this.status = "Aberto";
         this.itens = itens;
+        this.idPedido = idPedido;
+    }
+
+    public PedidoAquisicao(Usuario solicitante2, Departamento departamento2, List<ItemPedido> itens2) {
+        
     }
 
     public double getValorTotal() {
@@ -70,6 +75,10 @@ public class PedidoAquisicao {
 
     public List<ItemPedido> getItens() {
         return itens;
+    }
+
+    public String getidPedido() {
+        return idPedido;
     }
 
 }

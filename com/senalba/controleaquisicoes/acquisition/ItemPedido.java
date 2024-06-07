@@ -27,4 +27,9 @@ public class ItemPedido {
     public int getQuantidade() {
         return quantidade;
     }
+
+    public double getValorTotal() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getValorTotal'");
+    }
 }
