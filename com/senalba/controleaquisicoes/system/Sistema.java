@@ -7,7 +7,9 @@ import com.senalba.controleaquisicoes.user.Departamento;
 import com.senalba.controleaquisicoes.user.Funcionario;
 import com.senalba.controleaquisicoes.user.Usuario;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Sistema {
     private List<Usuario> usuarios;
@@ -62,7 +64,7 @@ public class Sistema {
         for (Usuario usuario : usuarios) {
             if (usuario.getId().equals(id)) {
                 usuarioAtual = usuario;
-                System.out.println(usuario.toString());
+                System.out.println("Usuário atual: " + usuario);
                 return;
             }
         }
@@ -70,6 +72,14 @@ public class Sistema {
     }
 
     public void registrarPedido(List<ItemPedido> itens, Usuario solicitante, Departamento departamento) {
+        if (solicitante instanceof Funcionario) {
+            Funcionario funcionario = (Funcionario) solicitante;
+            if (!funcionario.getDepartamento().equals(departamento)) {
+                System.out.println("Funcionário não pertence ao departamento especificado.");
+                return;
+            }
+        }
+
         PedidoAquisicao pedido = new PedidoAquisicao(solicitante, departamento, itens);
         if (pedido.getValorTotal() <= departamento.getLimitePorPedido()) {
             pedidos.add(pedido);
@@ -80,10 +90,15 @@ public class Sistema {
     }
 
     public void listarPedidosEntreDatas(Date inicio, Date fim) {
+        boolean found = false;
         for (PedidoAquisicao pedido : pedidos) {
             if (!pedido.getDataPedido().before(inicio) && !pedido.getDataPedido().after(fim)) {
                 System.out.println(pedido);
+                found = true;
             }
+        }
+        if (!found) {
+            System.out.println("Nenhum pedido encontrado no intervalo de datas especificado.");
         }
     }
 
@@ -106,9 +121,9 @@ public class Sistema {
         }
     }
 
-    public void aprovarRejeitarPedido(int idPedido, boolean aprovar) {
+    public void aprovarRejeitarPedido(String idPedido, boolean aprovar) {
         for (PedidoAquisicao pedido : pedidos) {
-            if (pedido.getidPedido().equals(idPedido) && usuarioAtual instanceof Administrador) {
+            if (pedido.getIdPedido().equals(idPedido) && usuarioAtual instanceof Administrador) {
                 if (aprovar) {
                     pedido.aprovar();
                     System.out.println("Pedido aprovado.");

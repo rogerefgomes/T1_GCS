@@ -8,9 +8,9 @@ import com.senalba.controleaquisicoes.user.Funcionario;
 import com.senalba.controleaquisicoes.user.Usuario;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -85,7 +85,7 @@ public class Main {
                             // Valida se o valor total do pedido é menor ou igual ao limite do departamento
                             double valorTotal = 0;
                             for (ItemPedido item : itens) {
-                                valorTotal += item.getValorTotal();
+                                valorTotal += item.getTotal();
                             }
 
                             if (valorTotal <= departamentoSolicitante.getLimitePorPedido()) {
@@ -120,7 +120,7 @@ public class Main {
                 case 6:
                     if (sistema.getUsuarioAtual() instanceof Administrador) {
                         System.out.print("Digite o ID do pedido: ");
-                        int pedidoId = scanner.nextInt();
+                        String pedidoId = scanner.nextLine();
                         System.out.print("Digite 1 para aprovar ou 0 para rejeitar: ");
                         boolean aprovar = scanner.nextInt() == 1;
                         sistema.aprovarRejeitarPedido(pedidoId, aprovar);

@@ -4,6 +4,7 @@ public class ItemPedido {
     private String descricao;
     private double valorUnitario;
     private int quantidade;
+    private double total;
 
     public ItemPedido(String descricao, double valorUnitario, int quantidade) {
         this.descricao = descricao;
@@ -28,8 +29,4 @@ public class ItemPedido {
         return quantidade;
     }
 
-    public double getValorTotal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getValorTotal'");
-    }
 }

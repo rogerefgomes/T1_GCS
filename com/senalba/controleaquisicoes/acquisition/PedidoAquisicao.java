@@ -4,11 +4,12 @@ import com.senalba.controleaquisicoes.user.Departamento;
 import com.senalba.controleaquisicoes.user.Funcionario;
 import com.senalba.controleaquisicoes.user.Usuario;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class PedidoAquisicao {
-    private Funcionario solicitante;
+    private Usuario solicitante;
     private Departamento departamento;
     private Date dataPedido;
     private Date dataConclusao;
@@ -16,17 +17,29 @@ public class PedidoAquisicao {
     private List<ItemPedido> itens;
     private String idPedido;
 
+    // Construtor para Funcionario
     public PedidoAquisicao(Funcionario solicitante, List<ItemPedido> itens, String idPedido) {
         this.solicitante = solicitante;
         this.departamento = solicitante.getDepartamento();
         this.dataPedido = new Date();
         this.status = "Aberto";
-        this.itens = itens;
+        this.itens = itens != null ? itens : new ArrayList<>();
         this.idPedido = idPedido;
     }
 
-    public PedidoAquisicao(Usuario solicitante2, Departamento departamento2, List<ItemPedido> itens2) {
-        
+    // Construtor para Usuario
+    public PedidoAquisicao(Usuario solicitante, Departamento departamento, List<ItemPedido> itens) {
+        this.solicitante = solicitante;
+        this.departamento = departamento;
+        this.dataPedido = new Date();
+        this.status = "Aberto";
+        this.itens = itens != null ? itens : new ArrayList<>();
+        this.idPedido = generateIdPedido(); // Método para gerar o ID do pedido
+    }
+
+    // Gerador de ID de pedido (pode ser substituído por qualquer lógica de geração de ID)
+    private String generateIdPedido() {
+        return "P" + System.currentTimeMillis();
     }
 
     public double getValorTotal() {
@@ -53,7 +66,7 @@ public class PedidoAquisicao {
     }
 
     // Getters and Setters
-    public Funcionario getSolicitante() {
+    public Usuario getSolicitante() {
         return solicitante;
     }
 
@@ -77,8 +90,7 @@ public class PedidoAquisicao {
         return itens;
     }
 
-    public String getidPedido() {
+    public String getIdPedido() {
         return idPedido;
     }
-
 }
